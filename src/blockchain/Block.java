@@ -18,5 +18,9 @@ public class Block
         //caculate hash
         return Utis.useHash(previousHash + Long.toString(timeStamp) + data);
     }
+    public String toString()
+    {
+        return "hash: "+hash+" previousHash: "+previousHash+" data: "+data+" timeStamp: "+timeStamp; 
+    }
 
 }
