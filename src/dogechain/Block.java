@@ -20,7 +20,7 @@ public class Block
     }
     public String toString()
     {
-        return "hash: "+hash+" previousHash: "+previousHash+" data: "+data+" timeStamp: "+timeStamp; 
+        return "hash: "+hash+"\npreviousHash: "+previousHash+"\ndata: "+data+"\ntimeStamp: "+timeStamp; 
     }
 
 }

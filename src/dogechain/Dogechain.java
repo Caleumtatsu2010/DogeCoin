@@ -9,7 +9,7 @@ public class Dogechain
         {
             for(int j=i+1;j<blockchain.size();j++)
             {
-                if(!blockchain.get(i).hash.equals(blockchain.get(j).hash))
+                if(!blockchain.get(i).hash.equals(blockchain.get(j).previousHash))
                 {
                     return false;
                 }
@@ -26,10 +26,6 @@ public class Dogechain
         blockchain.add(new Block("second block", blockchain.get(blockchain.size()-1).hash));
         blockchain.add(new Block("third block", blockchain.get(blockchain.size()-1).hash));
         blockchain.add(new Block("forth block", blockchain.get(blockchain.size()-1).hash));
-        for(Block i:blockchain)
-        {
-            System.out.println(i.toString());
-        }
         
     }
 }
