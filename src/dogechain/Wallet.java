@@ -8,6 +8,7 @@ import java.security.spec.ECGenParameterSpec;
 public class Wallet 
 {
     public PublicKey publicKey;
+    //password of wallet
     public PrivateKey privateKey;
     public Wallet()
     {

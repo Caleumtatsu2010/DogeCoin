@@ -1,8 +1,12 @@
+import java.security.Key;
 import java.security.MessageDigest;
+import java.security.PrivateKey;
+import java.security.Signature;
+import java.util.Base64;
 
 public class Utis 
 {
-    public static String useHash(String input)
+    public static String applySha256(String input)
     {
         try
         {
@@ -12,7 +16,7 @@ public class Utis
             StringBuffer hexString = new StringBuffer();
             for(int i=0;i<hash.length;i++)
             {
-                String hex = Integer.toHexString(0xff & hash[i]);//convert hashcode to string
+                String hex = Integer.toHexString(0xff & hash[i]);//convert each byte which is hashed to string
                 if(hex.length() == 1)
                 {
                     hexString.append('0');
@@ -24,7 +28,29 @@ public class Utis
         {
             throw new RuntimeException(e);
         }
-        
     }
+    public static String getStringFromKey(Key key)
+    {
+        return Base64.getEncoder().encodeToString(key.getEncoded());
+    }
+    //generate signature of transaction
+    public static byte[] applyECDSASig(PrivateKey privatekey, String input)
+    {
+        Signature dsa;//signature object
+        byte output[] = new byte[0];//real signature in byte type
+        try {
+            dsa = Signature.getInstance("ECDSA", "BC");//get ECDSA signature algorithm attach to dsa
+            dsa.initSign(privatekey);//init signature object dsa
+            byte strByte[] = input.getBytes();
+            dsa.update(strByte);//update input's byte to dsa signature objects
+
+            byte []realSig = dsa.sign();//get real signature from dsa
+            output = realSig;
+        } catch (Exception e) {
+           throw new RuntimeException(e);
+        }
+        return output;
+    }
+    //verifies a string signature
     
 }
