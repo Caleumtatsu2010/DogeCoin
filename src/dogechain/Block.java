@@ -16,11 +16,16 @@ public class Block
     public String caculateHash()
     {
         //caculate hash
-        return Utis.useHash(previousHash + Long.toString(timeStamp) + data);
+        return Utis.applySha256(previousHash + Long.toString(timeStamp) + data);
     }
     public String toString()
     {
         return "hash: "+hash+"\npreviousHash: "+previousHash+"\ndata: "+data+"\ntimeStamp: "+timeStamp; 
+    }
+    public mineBlock(int difficulty)
+    {
+        String target = new String(new char[difficulty]).replace('\0', 0);//create a string with difficulty 0
+        
     }
 
 }

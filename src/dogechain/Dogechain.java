@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Dogechain 
 {
     static ArrayList<Block> blockchain = new ArrayList<Block>();
+    //check if a block is valid
     public static Boolean isChainValid()
     {
         for(int i=0;i<blockchain.size();i++)
@@ -26,6 +27,8 @@ public class Dogechain
         blockchain.add(new Block("second block", blockchain.get(blockchain.size()-1).hash));
         blockchain.add(new Block("third block", blockchain.get(blockchain.size()-1).hash));
         blockchain.add(new Block("forth block", blockchain.get(blockchain.size()-1).hash));
+        for(Block i:blockchain)
+            System.out.println(i.hash);
         
     }
 }
