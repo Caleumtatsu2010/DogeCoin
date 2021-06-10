@@ -1,7 +1,6 @@
 import java.security.Key;
 import java.security.MessageDigest;
 import java.security.PrivateKey;
-import java.security.PublicKey;
 import java.security.Signature;
 import java.util.Base64;
 
@@ -34,13 +33,13 @@ public class Utis
     {
         return Base64.getEncoder().encodeToString(key.getEncoded());
     }
-    //generate signature of transaction using ECDSA
+    //generate signature of transaction
     public static byte[] applyECDSASig(PrivateKey privatekey, String input)
     {
         Signature dsa;//signature object
         byte output[] = new byte[0];//real signature in byte type
         try {
-            dsa = Signature.getInstance("ECDSA", "BC");//get ECDSA signature algorithm instant
+            dsa = Signature.getInstance("ECDSA", "BC");//get ECDSA signature algorithm attach to dsa
             dsa.initSign(privatekey);//init signature object dsa
             byte strByte[] = input.getBytes();
             dsa.update(strByte);//update input's byte to dsa signature objects
@@ -52,19 +51,6 @@ public class Utis
         }
         return output;
     }
-    //verifies a string signature using ECDSA
-    public static boolean verifyECDSASIg(PublicKey publickey , String data, Byte[] signature)
-    {
-        try
-        {
-            Signature ecdsaVerify = Signature.getInstance("ECDSA", "BC");//get instante of ECDSA algorithm
-            ecdsaVerify.initVerify(publickey);
-            ecdsaVerify.update(data.getBytes());
-            return ecdsaVerify.verify(signature);
-        }catch(Exception e)
-        {
-            throw new RuntimeException(e);
-        }
-    }
+    //verifies a string signature
     
 }

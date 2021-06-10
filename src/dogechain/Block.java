@@ -4,7 +4,7 @@ public class Block
 {
     public String hash;
     public String previousHash;
-    public String data;//will be replaced by transaction
+    public String data;
     public long timeStamp;
     public Block(String data, String previousHash)
     {
@@ -25,7 +25,7 @@ public class Block
     public mineBlock(int difficulty)
     {
         String target = new String(new char[difficulty]).replace('\0', 0);//create a string with difficulty 0
-
+        
     }
 
 }
