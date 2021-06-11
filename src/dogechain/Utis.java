@@ -1,11 +1,16 @@
 import java.security.Key;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.Signature;
 import java.util.Base64;
 
+
 public class Utis 
 {
+    //caculate hash algorithm
     public static String applySha256(String input)
     {
         try
@@ -51,6 +56,17 @@ public class Utis
         }
         return output;
     }
-    //verifies a string signature
+    //verifies a  signature
+    public static boolean verifyECDSASig(PublicKey publickey, String data, byte[] signature) throws NoSuchAlgorithmException, NoSuchProviderException
+    {
+        try {
+            Signature ecdsaVerify = Signature.getInstance("ECDSA", "BC");
+            ecdsaVerify.initVerify(publickey);
+            ecdsaVerify.update(data.getBytes());
+            return ecdsaVerify.verify(signature);   
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
+    }
     
 }

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Dogechain 
 {
+    //our block chain
     static ArrayList<Block> blockchain = new ArrayList<Block>();
     //check if a block is valid
     public static Boolean isChainValid()
@@ -23,12 +24,14 @@ public class Dogechain
         return true;
     }
     public static void main(String[] args) {
-        blockchain.add(new Block("first block", "0"));
-        blockchain.add(new Block("second block", blockchain.get(blockchain.size()-1).hash));
-        blockchain.add(new Block("third block", blockchain.get(blockchain.size()-1).hash));
-        blockchain.add(new Block("forth block", blockchain.get(blockchain.size()-1).hash));
-        for(Block i:blockchain)
-            System.out.println(i.hash);
+
+        // blockchain.add(new Block("first block", "0"));
+        // blockchain.add(new Block("second block", blockchain.get(blockchain.size()-1).hash));
+        // blockchain.add(new Block("third block", blockchain.get(blockchain.size()-1).hash));
+        // blockchain.add(new Block("forth block", blockchain.get(blockchain.size()-1).hash));
+        // for(Block i:blockchain)
+        //     System.out.println(i.hash);
+        //testing wallet
         
     }
 }

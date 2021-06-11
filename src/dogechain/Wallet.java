@@ -7,13 +7,16 @@ import java.security.spec.ECGenParameterSpec;
 
 public class Wallet 
 {
+    //id of wallet
     public PublicKey publicKey;
     //password of wallet
     public PrivateKey privateKey;
     public Wallet()
     {
+        //generate when wallet is created
         generateKeyPair();
     }
+    //generate public key vs private key randomly
     public void generateKeyPair()
     {
         try {

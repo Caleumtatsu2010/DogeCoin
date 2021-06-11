@@ -13,9 +13,10 @@ public class Block
         this.data = data;
         this.hash = caculateHash();
     }
+        //caculate hash 
     public String caculateHash()
     {
-        //caculate hash
+        //use Sha256 algorithm
         return Utis.applySha256(previousHash + Long.toString(timeStamp) + data);
     }
     public String toString()
